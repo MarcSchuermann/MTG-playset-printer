@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../PrintPlaysetLauncher/PrintPlaysetLauncher.csproj" Id="3bb920f2-7b3c-4449-9955-437c5bd20da9" />
+  <Project Path="PrintPlayset.csproj" />
+</Solution>
