@@ -22,10 +22,14 @@ namespace PrintPlayset
                Debug.WriteLine(file + " is not readable!");
                continue;
             }
-            using var bitmap = new Bitmap(235, 335);
+
+            var applicationConfiguration = new ApplicationConfiguration();
+
+            using var bitmap = new Bitmap(applicationConfiguration.CardWidth, applicationConfiguration.CardHeight);
             using var graphics = Graphics.FromImage(bitmap);
-            graphics.DrawImage(image, 0, 0, 235, 335);
+            graphics.DrawImage(image, 0, 0, applicationConfiguration.CardWidth, applicationConfiguration.CardHeight);
             bitmap.SetResolution(100, 100);
+
             var tempFile = Path.GetTempFileName().Replace(".tmp", ".png");
             bitmap.Save(tempFile);
 

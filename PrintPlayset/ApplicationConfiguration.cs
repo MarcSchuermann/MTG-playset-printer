@@ -18,7 +18,7 @@ namespace PrintPlayset
 
       private string GetSetting(string key)
       {
-         return configuration[key];
+         return configuration[$"AppSettings:{key}"];
       }
    }
 }
