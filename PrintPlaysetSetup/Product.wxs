@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="PrintPlayset" Language="1033" Version="1.0.0.0" Manufacturer="Marc Schuermann" UpgradeCode="2b840e5f-9501-4e3e-be35-ac879323d075">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate />
+
+		<Feature Id="ProductFeature" Title="PrintPlaysetSetup" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="PrintPlaysetSetup" />
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+
+      <!-- Application Files -->
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			 <Component Id="ProductComponent">
+             <File Source="D:\_gitHub\MarcSchuermann\MTG-playset-printer\PrintPlaysetLauncher\bin\Debug\net8.0\PrintPlaysetLauncher.exe" KeyPath="yes" />
+             <File Source="D:\_gitHub\MarcSchuermann\MTG-playset-printer\PrintPlaysetLauncher\bin\Debug\net8.0\*.dll" />
+             <File Source="D:\_gitHub\MarcSchuermann\MTG-playset-printer\PrintPlaysetLauncher\bin\Debug\net8.0\*.config" />
+          </Component> 
+		</ComponentGroup>
+
+      <!-- File Associations -->
+      <ComponentGroup Id="ImageFileAssociations" Directory="INSTALLFOLDER">
+
+         <!-- PNG -->
+         <Component Id="Assoc_PNG" Guid="PUT-GUID-HERE">
+            <RegistryKey Root="HKLM" Key="SOFTWARE\Classes\SystemFileAssociations\.png\shell\OpenWithMeineApp">
+               <RegistryValue Name="" Value="Mit MeineApp öffnen" Type="string" KeyPath="yes" />
+               <RegistryKey Key="command">
+                  <RegistryValue Name="" Value="&quot;[INSTALLFOLDER]MeineApp.exe&quot; &quot;%1&quot;" Type="string" />
+               </RegistryKey>
+            </RegistryKey>
+         </Component>
+
+         <!-- JPG -->
+         <Component Id="Assoc_JPG" Guid="PUT-GUID-HERE">
+            <RegistryKey Root="HKLM" Key="SOFTWARE\Classes\SystemFileAssociations\.jpg\shell\OpenWithMeineApp">
+               <RegistryValue Name="" Value="Mit MeineApp öffnen" Type="string" KeyPath="yes" />
+               <RegistryKey Key="command">
+                  <RegistryValue Name="" Value="&quot;[INSTALLFOLDER]MeineApp.exe&quot; &quot;%1&quot;" Type="string" />
+               </RegistryKey>
+            </RegistryKey>
+         </Component>
+
+         <!-- JPEG -->
+         <Component Id="Assoc_JPEG" Guid="PUT-GUID-HERE">
+            <RegistryKey Root="HKLM" Key="SOFTWARE\Classes\SystemFileAssociations\.jpeg\shell\OpenWithMeineApp">
+               <RegistryValue Name="" Value="Mit MeineApp öffnen" Type="string" KeyPath="yes" />
+               <RegistryKey Key="command">
+                  <RegistryValue Name="" Value="&quot;[INSTALLFOLDER]MeineApp.exe&quot; &quot;%1&quot;" Type="string" />
+               </RegistryKey>
+            </RegistryKey>
+         </Component>
+
+         <!-- BMP -->
+         <Component Id="Assoc_BMP" Guid="PUT-GUID-HERE">
+            <RegistryKey Root="HKLM" Key="SOFTWARE\Classes\SystemFileAssociations\.bmp\shell\OpenWithMeineApp">
+               <RegistryValue Name="" Value="Mit MeineApp öffnen" Type="string" KeyPath="yes" />
+               <RegistryKey Key="command">
+                  <RegistryValue Name="" Value="&quot;[INSTALLFOLDER]MeineApp.exe&quot; &quot;%1&quot;" Type="string" />
+               </RegistryKey>
+            </RegistryKey>
+         </Component>
+
+         <!-- GIF -->
+         <Component Id="Assoc_GIF" Guid="PUT-GUID-HERE">
+            <RegistryKey Root="HKLM" Key="SOFTWARE\Classes\SystemFileAssociations\.gif\shell\OpenWithMeineApp">
+               <RegistryValue Name="" Value="Mit MeineApp öffnen" Type="string" KeyPath="yes" />
+               <RegistryKey Key="command">
+                  <RegistryValue Name="" Value="&quot;[INSTALLFOLDER]MeineApp.exe&quot; &quot;%1&quot;" Type="string" />
+               </RegistryKey>
+            </RegistryKey>
+         </Component>
+
+         <!-- TIFF -->
+         <Component Id="Assoc_TIFF" Guid="PUT-GUID-HERE">
+            <RegistryKey Root="HKLM" Key="SOFTWARE\Classes\SystemFileAssociations\.tif\shell\OpenWithMeineApp">
+               <RegistryValue Name="" Value="Mit MeineApp öffnen" Type="string" KeyPath="yes" />
+               <RegistryKey Key="command">
+                  <RegistryValue Name="" Value="&quot;[INSTALLFOLDER]MeineApp.exe&quot; &quot;%1&quot;" Type="string" />
+               </RegistryKey>
+            </RegistryKey>
+         </Component>
+
+         <Component Id="Assoc_TIFF2" Guid="PUT-GUID-HERE">
+            <RegistryKey Root="HKLM" Key="SOFTWARE\Classes\SystemFileAssociations\.tiff\shell\OpenWithMeineApp">
+               <RegistryValue Name="" Value="Mit MeineApp öffnen" Type="string" KeyPath="yes" />
+               <RegistryKey Key="command">
+                  <RegistryValue Name="" Value="&quot;[INSTALLFOLDER]MeineApp.exe&quot; &quot;%1&quot;" Type="string" />
+               </RegistryKey>
+            </RegistryKey>
+         </Component>
+
+      </ComponentGroup>
+
+
+   </Fragment>
+</Wix>
