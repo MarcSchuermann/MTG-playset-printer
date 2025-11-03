@@ -27,8 +27,7 @@
                      SourceFile="..\Installer\bin\Release\MeineApp.msi"
                      DisplayName="MeineApp"
                      Vital="yes"
-                     Compressed="yes"
-                     PerMachine="yes" />
+                     Compressed="yes" />
       </Chain>
    </Bundle>
 </Wix>
