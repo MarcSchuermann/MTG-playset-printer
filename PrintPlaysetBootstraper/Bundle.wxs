@@ -8,7 +8,7 @@
            UpgradeCode="2b840e5f-9501-4e3e-be35-ac879323d075">
 
       <!-- Standard UI für den Bootstrapper -->
-      <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.HyperlinkLicense" />
+      <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense" />
 
       <Chain>
          <!-- Optional: .NET 8 Desktop Runtime als Voraussetzung -->
@@ -24,8 +24,8 @@
 
          <!-- Dein MSI -->
          <MsiPackage Id="MeineAppMsi"
-                     SourceFile="..\Installer\bin\Release\MeineApp.msi"
-                     DisplayName="MeineApp"
+                     SourceFile="..\PrintPlaysetSetup\bin\Debug\PrintPlaysetSetup.msi"
+                     DisplayName="PrintPlaysetSetup"
                      Vital="yes"
                      Compressed="yes" />
       </Chain>
