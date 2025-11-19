@@ -1,6 +1,28 @@
-// See https://aka.ms/new-console-template for more information
 using PrintPlayset;
 
-Console.WriteLine("Hello, World!");
+namespace PrintPlaysetLauncher
+{
+   public class Program
+   {
+      public static void Main(string[] args)
+      {
+         Console.WriteLine("Hello, World!");
 
-ImagesManipulator.ResizeImages(new []{ "C:\\Users\\MarcS\\Pictures\\Screenshots\\Screenshot 2025-09-21 135012.png" }).ToList();
+         foreach (var arg in args)
+         {
+            Console.WriteLine(arg);
+         }
+
+         foreach (var filePath in args)
+         {
+            if (!File.Exists(filePath))
+               continue;
+
+            ImagesManipulator.ResizeImages(new[] { filePath }).ToList();
+         }
+
+
+         Console.WriteLine("End, World!");
+      }
+   }
+}
