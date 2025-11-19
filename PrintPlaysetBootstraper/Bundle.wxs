@@ -15,7 +15,7 @@
          <ExePackage Id="DotNetDesktopRuntime80"
                      DisplayName=".NET 8 Desktop Runtime"
                      Cache="no"
-                     Compressed="no"
+                     Compressed="yes"
                      PerMachine="yes"
                      Vital="yes"
                      InstallCommand="/install /quiet /norestart"
