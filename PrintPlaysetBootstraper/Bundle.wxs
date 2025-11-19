@@ -20,7 +20,7 @@
                      Vital="yes"
                      InstallCommand="/install /quiet /norestart"
                      DetectCondition="NET8DESKTOP_INSTALLED"
-                     SourceFile="dotnet-runtime-8.0.21-win-x64.exe" />
+                     SourceFile="dotnet-runtime-8.0.22-win-x64.exe" />
 
          <!-- Dein MSI -->
          <MsiPackage Id="MeineAppMsi"
