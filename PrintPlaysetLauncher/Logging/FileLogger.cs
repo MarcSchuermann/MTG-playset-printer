@@ -13,7 +13,7 @@ namespace PrintPlaysetLauncher.Logging
       public void Log<TState>(LogLevel logLevel, EventId eventId,
           TState state, Exception exception, Func<TState, Exception, string> formatter)
       {
-         var message = $"{DateTime.Now}: {formatter(state, exception)}";
+         var message = $"{DateTime.Now}: {logLevel}: {formatter(state, exception)}";
          File.AppendAllText(_path, message + Environment.NewLine);
       }
 
