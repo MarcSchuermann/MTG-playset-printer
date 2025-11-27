@@ -1,12 +1,13 @@
-using System.Diagnostics;
 using System.Drawing;
+
+using Microsoft.Extensions.Logging;
 
 namespace PrintPlayset
 {
    public class ImagesManipulator
    {
       [System.Diagnostics.CodeAnalysis.SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification = "<Pending>")]
-      public static IEnumerable<string> ResizeImages(IEnumerable<string> itemPaths, int cardWidth, int cardHeight)
+      public static IEnumerable<string> ResizeImages(ILogger logger, IEnumerable<string> itemPaths, int cardWidth, int cardHeight)
       {
          foreach (var file in itemPaths)
          {
@@ -19,7 +20,7 @@ namespace PrintPlayset
             }
             catch
             {
-               Debug.WriteLine(file + " is not readable!");
+               logger.LogWarning(file + " is not readable!");
                continue;
             }
 
@@ -30,6 +31,8 @@ namespace PrintPlayset
 
             var tempFile = Path.GetTempFileName().Replace(".tmp", ".png");
             bitmap.Save(tempFile);
+
+            logger.LogInformation(file + " resized to " + tempFile);
 
             yield return tempFile;
          }
