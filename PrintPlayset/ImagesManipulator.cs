@@ -6,7 +6,7 @@ namespace PrintPlayset
    public class ImagesManipulator
    {
       [System.Diagnostics.CodeAnalysis.SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification = "<Pending>")]
-      public static IEnumerable<string> ResizeImages(IEnumerable<string> itemPaths)
+      public static IEnumerable<string> ResizeImages(IEnumerable<string> itemPaths, int cardWidth, int cardHeight)
       {
          foreach (var file in itemPaths)
          {
@@ -23,11 +23,9 @@ namespace PrintPlayset
                continue;
             }
 
-            var applicationConfiguration = new ApplicationConfiguration();
-
-            using var bitmap = new Bitmap(applicationConfiguration.CardWidth, applicationConfiguration.CardHeight);
+            using var bitmap = new Bitmap(cardWidth, cardHeight);
             using var graphics = Graphics.FromImage(bitmap);
-            graphics.DrawImage(image, 0, 0, applicationConfiguration.CardWidth, applicationConfiguration.CardHeight);
+            graphics.DrawImage(image, 0, 0, cardWidth, cardHeight);
             bitmap.SetResolution(100, 100);
 
             var tempFile = Path.GetTempFileName().Replace(".tmp", ".png");
