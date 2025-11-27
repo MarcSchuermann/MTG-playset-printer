@@ -53,6 +53,9 @@
          <Component Id="MicrosoftExtensionsConfigurationFileExtensions" Win64="yes" >
             <File Source="D:\_gitHub\MarcSchuermann\MTG-playset-printer\PrintPlaysetLauncher\bin\Debug\net8.0\Microsoft.Extensions.Configuration.FileExtensions.dll" />
          </Component>
+         <Component Id="MicrosoftExtensionsConfigurationBinder" Win64="yes" >
+            <File Source="D:\_gitHub\MarcSchuermann\MTG-playset-printer\PrintPlaysetLauncher\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Binder.dll" />
+         </Component>
          <Component Id="MicrosoftExtensionsFileProvidersPhysical" Win64="yes" >
             <File Source="D:\_gitHub\MarcSchuermann\MTG-playset-printer\PrintPlaysetLauncher\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Physical.dll" />
          </Component>
@@ -73,6 +76,18 @@
          </Component>
          <Component Id="MicrosoftExtensionsLoggingConsole" Win64="yes" >
             <File Source="D:\_gitHub\MarcSchuermann\MTG-playset-printer\PrintPlaysetLauncher\bin\Debug\net8.0\Microsoft.Extensions.Logging.Console.dll" />
+         </Component>
+         <Component Id="MicrosoftExtensionsDependencyInjectionAbstractions" Win64="yes" >
+            <File Source="D:\_gitHub\MarcSchuermann\MTG-playset-printer\PrintPlaysetLauncher\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
+         </Component>
+         <Component Id="MicrosoftExtensionsDependencyInjection" Win64="yes" >
+            <File Source="D:\_gitHub\MarcSchuermann\MTG-playset-printer\PrintPlaysetLauncher\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll" />
+         </Component>
+         <Component Id="MicrosoftExtensionsOptions" Win64="yes" >
+            <File Source="D:\_gitHub\MarcSchuermann\MTG-playset-printer\PrintPlaysetLauncher\bin\Debug\net8.0\Microsoft.Extensions.Options.dll" />
+         </Component>
+         <Component Id="MicrosoftExtensionsOptionsConfigurationExtensions" Win64="yes" >
+            <File Source="D:\_gitHub\MarcSchuermann\MTG-playset-printer\PrintPlaysetLauncher\bin\Debug\net8.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll" />
          </Component>
       </ComponentGroup>
 
