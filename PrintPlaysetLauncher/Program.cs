@@ -3,6 +3,8 @@ using Microsoft.Extensions.Logging;
 
 using PrintPlayset;
 
+using PrintPlaysetLauncher.Logging;
+
 namespace PrintPlaysetLauncher
 {
    public class Program
@@ -32,7 +34,15 @@ namespace PrintPlaysetLauncher
 
       private static ILogger CreateLogger(LogLevel logLevel)
       {
-         using var loggerFactory = LoggerFactory.Create(builder => builder.AddFilter("Default", logLevel).AddConsole());
+         var appDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "PrintPlayset");
+         if (!Directory.Exists(appDataPath))
+            Directory.CreateDirectory(appDataPath);
+
+         var logFile = Path.Combine(appDataPath, "printPlayset.log");
+         if (!File.Exists(logFile))
+            File.Create(logFile);
+
+         using var loggerFactory = LoggerFactory.Create(builder => builder.AddFilter("Default", logLevel).AddProvider(new FileLoggerProvider(logFile)).AddConsole());
 
          var logger = loggerFactory.CreateLogger<Program>();
          return logger;

@@ -62,6 +62,18 @@
          <Component Id="MicrosoftExtensionsFileSystemGlobbing" Win64="yes" >
             <File Source="D:\_gitHub\MarcSchuermann\MTG-playset-printer\PrintPlaysetLauncher\bin\Debug\net8.0\Microsoft.Extensions.FileSystemGlobbing.dll" />
          </Component>
+         <Component Id="MicrosoftExtensionsLogging" Win64="yes" >
+            <File Source="D:\_gitHub\MarcSchuermann\MTG-playset-printer\PrintPlaysetLauncher\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll" />
+         </Component>
+         <Component Id="MicrosoftExtensionsLoggingAbstractions" Win64="yes" >
+            <File Source="D:\_gitHub\MarcSchuermann\MTG-playset-printer\PrintPlaysetLauncher\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll" />
+         </Component>
+         <Component Id="MicrosoftExtensionsLoggingConfiguration" Win64="yes" >
+            <File Source="D:\_gitHub\MarcSchuermann\MTG-playset-printer\PrintPlaysetLauncher\bin\Debug\net8.0\Microsoft.Extensions.Logging.Configuration.dll" />
+         </Component>
+         <Component Id="MicrosoftExtensionsLoggingConsole" Win64="yes" >
+            <File Source="D:\_gitHub\MarcSchuermann\MTG-playset-printer\PrintPlaysetLauncher\bin\Debug\net8.0\Microsoft.Extensions.Logging.Console.dll" />
+         </Component>
       </ComponentGroup>
 
       <!-- File Associations -->
