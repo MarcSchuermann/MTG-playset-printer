@@ -26,7 +26,7 @@ namespace PrintPlaysetLauncher
             if (!File.Exists(filePath))
                continue;
 
-            ImagesManipulator.ResizeImages(new[] { filePath }, appConfig.CardWidth, appConfig.CardHeight).ToList();
+            var resizedImages = ImagesManipulator.ResizeImages(logger, new[] { filePath }, appConfig.CardWidth, appConfig.CardHeight).ToList();
          }
 
          logger.LogInformation($"App finished");
