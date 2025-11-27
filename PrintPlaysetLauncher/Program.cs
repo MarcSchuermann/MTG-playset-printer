@@ -24,12 +24,17 @@ namespace PrintPlaysetLauncher
          foreach (var filePath in args)
          {
             if (!File.Exists(filePath))
+            {
+               logger.LogWarning($"File {filePath} does not exist. Skipping.");
                continue;
+            }
 
             var resizedImages = ImagesManipulator.ResizeImages(logger, new[] { filePath }, appConfig.CardWidth, appConfig.CardHeight).ToList();
+
+            ImagePrinter.PrintImages(logger, resizedImages);
          }
 
-         logger.LogInformation($"App finished");
+         logger.LogInformation("App finished");
       }
 
       private static ILogger CreateLogger(LogLevel logLevel)
