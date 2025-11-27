@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace PrintPlayset
 {
@@ -15,6 +16,8 @@ namespace PrintPlayset
       public int CardWidth => int.TryParse(GetSetting("CardWidth"), out var parsedWidth) ? parsedWidth : 235;
 
       public int CardHeight => int.TryParse(GetSetting("CardHeight"), out var parsedHeigth) ? parsedHeigth : 335;
+
+      public LogLevel LogLevel => Enum.TryParse(GetSetting("LogLevel"), out LogLevel parsedLogLevel) ? parsedLogLevel : LogLevel.Information;
 
       private string GetSetting(string key)
       {

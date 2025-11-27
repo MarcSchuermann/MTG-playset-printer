@@ -11,10 +11,11 @@ namespace PrintPlaysetLauncher
       [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2254:Template should be a static expression", Justification = "<Pending>")]
       public static void Main(string[] args)
       {
-         var logger = CreateLogger();
+         var appConfig = new ApplicationConfiguration();
+
+         var logger = CreateLogger(appConfig.LogLevel);
          logger.LogInformation($"App startet with args {string.Join(", ", args)}");
 
-         var appConfig = new ApplicationConfiguration();
          logger.LogInformation($"Card width from config {appConfig.CardWidth}");
          logger.LogInformation($"Card height from config {appConfig.CardHeight}");
 
@@ -26,13 +27,12 @@ namespace PrintPlaysetLauncher
             ImagesManipulator.ResizeImages(new[] { filePath }, appConfig.CardWidth, appConfig.CardHeight).ToList();
          }
 
-
          logger.LogInformation($"App finished");
       }
 
-      private static ILogger CreateLogger()
+      private static ILogger CreateLogger(LogLevel logLevel)
       {
-         using var loggerFactory = LoggerFactory.Create(builder => builder.AddFilter("Default", LogLevel.Information).AddConsole());
+         using var loggerFactory = LoggerFactory.Create(builder => builder.AddFilter("Default", logLevel).AddConsole());
 
          var logger = loggerFactory.CreateLogger<Program>();
          return logger;
