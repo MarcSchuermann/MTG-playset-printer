@@ -5,7 +5,8 @@
    <Bundle Name="Print Playset"
            Version="1.0.0.0"
            Manufacturer="Marc Schuermann"
-           UpgradeCode="2b840e5f-9501-4e3e-be35-ac879323d075">
+           UpgradeCode="2b840e5f-9501-4e3e-be35-ac879323d075"
+           IconSourceFile="icon.ico">
 
       <!-- Standard UI für den Bootstrapper -->
       <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense" />

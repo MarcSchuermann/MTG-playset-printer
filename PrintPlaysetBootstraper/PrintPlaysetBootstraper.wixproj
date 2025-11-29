@@ -29,6 +29,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="dotnet-runtime-8.0.22-win-x64.exe" />
+    <Content Include="icon.ico" />
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" Condition=" '$(WixTargetsPath)' != '' " />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets" Condition=" '$(WixTargetsPath)' == '' AND Exists('$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets') " />
