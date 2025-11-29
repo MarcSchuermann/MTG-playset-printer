@@ -23,9 +23,16 @@
                      DetectCondition="NET8DESKTOP_INSTALLED"
                      SourceFile="dotnet-runtime-8.0.22-win-x64.exe" />
 
-         <!-- Dein MSI -->
-         <MsiPackage Id="MeineAppMsi"
-                     SourceFile="..\PrintPlaysetSetup\bin\Debug\PrintPlaysetSetup.msi"
+         <!-- en-us MSI -->
+         <MsiPackage Id="MeineEnAppMsi"
+                     SourceFile="..\PrintPlaysetSetup\bin\Debug\en-us\PrintPlaysetSetup.msi"
+                     DisplayName="PrintPlaysetSetup"
+                     Vital="yes"
+                     Compressed="yes" />
+
+         <!-- de-de MSI -->
+         <MsiPackage Id="MeineDeAppMsi"
+                     SourceFile="..\PrintPlaysetSetup\bin\Debug\de-de\PrintPlaysetSetup.msi"
                      DisplayName="PrintPlaysetSetup"
                      Vital="yes"
                      Compressed="yes" />
