@@ -1,13 +1,16 @@
 
 using System.Drawing;
 using System.Drawing.Printing;
+
 using Microsoft.Extensions.Logging;
+
+using System.Windows.Forms;
 
 namespace PrintPlayset
 {
    public static class ImagePrinter
    {
-      public static void PrintImages(ILogger logger, IEnumerable<string> imagesToPrint)
+      public static void PrintImages(ILogger logger, IEnumerable<string> imagesToPrint, bool openFilePreviewDialog)
       {
          foreach (var file in imagesToPrint)
          {
@@ -36,7 +39,37 @@ namespace PrintPlayset
                   }
                };
 
-               printDocument.Print();
+               if (openFilePreviewDialog)
+               {
+                  logger.LogInformation("Open print dialog for file " + file);
+
+                  var previewDialog = new PrintPreviewDialog
+                  {
+                     Document = printDocument
+                  };
+
+                  try
+                  {
+                     previewDialog.ShowDialog();
+                  }
+                  catch (Exception ex)
+                  {
+                     logger.LogError(ex, "Error showing print preview dialog for image " + file);
+                  }
+               }
+               else
+               {
+                  logger.LogInformation("Printing file " + file);
+
+                  try
+                  {
+                     printDocument.Print();
+                  }
+                  catch (Exception ex)
+                  {
+                     logger.LogError(ex, "Error printing image " + file);
+                  }
+               }
                logger.LogInformation("File " + file + " printed.");
             }
          }

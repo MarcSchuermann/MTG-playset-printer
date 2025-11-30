@@ -31,7 +31,7 @@ namespace PrintPlaysetLauncher
 
             var resizedImages = ImagesManipulator.ResizeImages(logger, new[] { filePath }, appConfig.CardWidth, appConfig.CardHeight).ToList();
 
-            ImagePrinter.PrintImages(logger, resizedImages);
+            ImagePrinter.PrintImages(logger, resizedImages, appConfig.OpenFilePreviewDialog);
          }
 
          logger.LogInformation("App finished");

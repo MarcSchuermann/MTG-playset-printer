@@ -19,6 +19,8 @@ namespace PrintPlayset
 
       public LogLevel LogLevel => Enum.TryParse(GetSetting("LogLevel"), out LogLevel parsedLogLevel) ? parsedLogLevel : LogLevel.Information;
 
+      public bool OpenFilePreviewDialog => bool.TryParse(GetSetting("OpenFilePreviewDialog"), out var parsedOpenFilePreviewDialog) && parsedOpenFilePreviewDialog;
+
       private string GetSetting(string key)
       {
          return configuration[$"AppSettings:{key}"];
