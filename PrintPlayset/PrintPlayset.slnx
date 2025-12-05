@@ -3,6 +3,9 @@
     <Platform Name="Any CPU" />
     <Platform Name="x86" />
   </Configurations>
+  <Folder Name="/Solution Items/">
+    <File Path="../azure-pipelines.yml" />
+  </Folder>
   <Project Path="../PrintPlaysetBootstraper/PrintPlaysetBootstraper.wixproj" Id="70aeed9f-3490-47c9-9953-8aefd0c341bf">
     <Platform Project="x86" />
     <Build />
