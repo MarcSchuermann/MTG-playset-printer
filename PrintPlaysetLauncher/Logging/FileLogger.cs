@@ -15,6 +15,9 @@ namespace PrintPlaysetLauncher.Logging
       {
          var message = $"{DateTime.Now}: {logLevel}: {formatter(state, exception)}";
          File.AppendAllText(_path, message + Environment.NewLine);
+
+         if (exception != null)
+            File.AppendAllText(_path, exception.ToString() + Environment.NewLine);
       }
 
    }
