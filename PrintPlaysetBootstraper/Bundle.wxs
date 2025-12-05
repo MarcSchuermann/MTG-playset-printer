@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:bal="http://schemas.microsoft.com/wix/BalExtension">
+
+   <Bundle Name="Print Playset"
+           Version="1.0.0.0"
+           Manufacturer="Marc Schuermann"
+           UpgradeCode="2b840e5f-9501-4e3e-be35-ac879323d075"
+           IconSourceFile="icon.ico">
+
+      <!-- Standard UI für den Bootstrapper -->
+      <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense" />
+
+      <Chain>
+         <!-- Optional: .NET 8 Desktop Runtime als Voraussetzung -->
+         <ExePackage Id="DotNetDesktopRuntime80"
+                     DisplayName=".NET 8 Desktop Runtime"
+                     Cache="no"
+                     Compressed="yes"
+                     PerMachine="yes"
+                     Vital="yes"
+                     InstallCommand="/install /quiet /norestart"
+                     DetectCondition="NET8DESKTOP_INSTALLED"
+                     SourceFile="dotnet-runtime-8.0.22-win-x64.exe" />
+
+         <!-- en-us MSI -->
+         <MsiPackage Id="MeineEnAppMsi"
+                     SourceFile="..\PrintPlaysetSetup\bin\Debug\en-us\PrintPlaysetSetup.msi"
+                     DisplayName="PrintPlaysetSetup"
+                     Vital="yes"
+                     Compressed="yes" />
+
+         <!-- de-de MSI -->
+         <MsiPackage Id="MeineDeAppMsi"
+                     SourceFile="..\PrintPlaysetSetup\bin\Debug\de-de\PrintPlaysetSetup.msi"
+                     DisplayName="PrintPlaysetSetup"
+                     Vital="yes"
+                     Compressed="yes" />
+      </Chain>
+   </Bundle>
+</Wix>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="PrintPlayset" Language="1033" Version="1.0.0.0" Manufacturer="Marc Schuermann" UpgradeCode="2b840e5f-9501-4e3e-be35-ac879323d075">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Platform="x64" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate />
+
+		<Feature Id="ProductFeature" Title="PrintPlaysetSetup" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+         <ComponentGroupRef Id="ImageFileAssociations" />
+      </Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFiles64Folder">
+				<Directory Id="INSTALLFOLDER" Name="Print Playset" />
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+
+      <!-- Application Files -->
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			 <Component Id="ProductComponentLancherExe" Win64="yes" >
+             <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\PrintPlaysetLauncher.exe" KeyPath="yes" />
+             <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\PrintPlaysetLauncher.runtimeconfig.json" />
+             <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\appsettings.json" />
+          </Component>
+         <Component Id="ProductComponentPrintPlayset" Win64="yes" >
+            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\PrintPlayset.dll" />
+         </Component>
+         <Component Id="ProductComponentPrintPlaysetLauncher" Win64="yes" >
+            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\PrintPlaysetLauncher.dll" />
+         </Component>
+         <Component Id="SystemDrawingCommon" Win64="yes" >
+            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\System.Drawing.Common.dll" />
+         </Component>
+         <Component Id="MicrosoftExtensionsConfigurationAbstractions" Win64="yes" >
+            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll" />
+         </Component>         
+         <Component Id="MicrosoftExtensionsConfiguration" Win64="yes" >
+            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.dll" />
+         </Component>
+         <Component Id="MicrosoftExtensionsConfigurationJson" Win64="yes" >
+            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Json.dll" />
+         </Component>
+         <Component Id="MicrosoftExtensionsFileProvidersAbstractions" Win64="yes" >
+            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll" />
+         </Component>
+         <Component Id="MicrosoftExtensionsConfigurationFileExtensions" Win64="yes" >
+            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.FileExtensions.dll" />
+         </Component>
+         <Component Id="MicrosoftExtensionsConfigurationBinder" Win64="yes" >
+            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Binder.dll" />
+         </Component>
+         <Component Id="MicrosoftExtensionsFileProvidersPhysical" Win64="yes" >
+            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.FileProviders.Physical.dll" />
+         </Component>
+         <Component Id="MicrosoftExtensionsPrimitives" Win64="yes" >
+            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.Primitives.dll" />
+         </Component>
+         <Component Id="MicrosoftExtensionsFileSystemGlobbing" Win64="yes" >
+            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll" />
+         </Component>
+         <Component Id="MicrosoftExtensionsLogging" Win64="yes" >
+            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.dll" />
+         </Component>
+         <Component Id="MicrosoftExtensionsLoggingAbstractions" Win64="yes" >
+            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Abstractions.dll" />
+         </Component>
+         <Component Id="MicrosoftExtensionsLoggingConfiguration" Win64="yes" >
+            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Configuration.dll" />
+         </Component>
+         <Component Id="MicrosoftExtensionsLoggingConsole" Win64="yes" >
+            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Console.dll" />
+         </Component>
+         <Component Id="MicrosoftExtensionsDependencyInjectionAbstractions" Win64="yes" >
+            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
+         </Component>
+         <Component Id="MicrosoftExtensionsDependencyInjection" Win64="yes" >
+            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.dll" />
+         </Component>
+         <Component Id="MicrosoftExtensionsOptions" Win64="yes" >
+            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.Options.dll" />
+         </Component>
+         <Component Id="MicrosoftExtensionsOptionsConfigurationExtensions" Win64="yes" >
+            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.Options.ConfigurationExtensions.dll" />
+         </Component>
+      </ComponentGroup>
+
+      <!-- File Associations -->
+      <ComponentGroup Id="ImageFileAssociations" Directory="INSTALLFOLDER">
+
+         <!-- PNG -->
+         <Component Id="Assoc_PNG" Guid="7DA25DC4-E0D5-4D71-B005-5BF31DA8A6EB" Win64="yes" >
+            <RegistryKey Root="HKLM" Key="SOFTWARE\Classes\SystemFileAssociations\.png\shell\OpenWithMeineApp">
+               <RegistryValue Value="!(loc.ContextMenuText)" Type="string" KeyPath="yes" />
+               <!-- Icon for Contextmenuentry -->
+               <RegistryValue Name="Icon" Value="&quot;[INSTALLFOLDER]PrintPlaysetLauncher.exe&quot;,0" Type="string" />
+               <RegistryKey Key="command">
+                  <RegistryValue Value="&quot;[INSTALLFOLDER]PrintPlaysetLauncher.exe&quot; &quot;%1&quot;" Type="string" />
+               </RegistryKey>
+            </RegistryKey>
+         </Component>
+
+         <!-- JPG -->
+         <Component Id="Assoc_JPG" Guid="E5999999-C58D-4630-975B-C199F7FB43B8" Win64="yes" >
+            <RegistryKey Root="HKLM" Key="SOFTWARE\Classes\SystemFileAssociations\.jpg\shell\OpenWithMeineApp">
+               <RegistryValue Value="!(loc.ContextMenuText)" Type="string" KeyPath="yes" />
+               <!-- Icon for Contextmenuentry -->
+               <RegistryValue Name="Icon" Value="&quot;[INSTALLFOLDER]PrintPlaysetLauncher.exe&quot;,0" Type="string" />
+               <RegistryKey Key="command">
+                  <RegistryValue Value="&quot;[INSTALLFOLDER]PrintPlaysetLauncher.exe&quot; &quot;%1&quot;" Type="string" />
+               </RegistryKey>
+            </RegistryKey>
+         </Component>
+
+         <!-- JPEG -->
+         <Component Id="Assoc_JPEG" Guid="D6D76443-D63E-4CF3-A837-C0F3FD87FF44" Win64="yes" >
+            <RegistryKey Root="HKLM" Key="SOFTWARE\Classes\SystemFileAssociations\.jpeg\shell\OpenWithMeineApp">
+               <RegistryValue Value="!(loc.ContextMenuText)" Type="string" KeyPath="yes" />
+               <!-- Icon for Contextmenuentry -->
+               <RegistryValue Name="Icon" Value="&quot;[INSTALLFOLDER]PrintPlaysetLauncher.exe&quot;,0" Type="string" />
+               <RegistryKey Key="command">
+                  <RegistryValue Value="&quot;[INSTALLFOLDER]PrintPlaysetLauncher.exe&quot; &quot;%1&quot;" Type="string" />
+               </RegistryKey>
+            </RegistryKey>
+         </Component>
+
+         <!-- BMP -->
+         <Component Id="Assoc_BMP" Guid="7B7199BA-BD34-484A-AF51-C7DE7ECCF27C" Win64="yes" >
+            <RegistryKey Root="HKLM" Key="SOFTWARE\Classes\SystemFileAssociations\.bmp\shell\OpenWithMeineApp">
+               <RegistryValue Value="!(loc.ContextMenuText)" Type="string" KeyPath="yes" />
+               <!-- Icon for Contextmenuentry -->
+               <RegistryValue Name="Icon" Value="&quot;[INSTALLFOLDER]PrintPlaysetLauncher.exe&quot;,0" Type="string" />
+               <RegistryKey Key="command">
+                  <RegistryValue Value="&quot;[INSTALLFOLDER]PrintPlaysetLauncher.exe&quot; &quot;%1&quot;" Type="string" />
+               </RegistryKey>
+            </RegistryKey>
+         </Component>
+
+         <!-- GIF -->
+         <Component Id="Assoc_GIF" Guid="8C676211-1C27-4AA2-A540-5072205F20E7" Win64="yes" >
+            <RegistryKey Root="HKLM" Key="SOFTWARE\Classes\SystemFileAssociations\.gif\shell\OpenWithMeineApp">
+               <RegistryValue Value="!(loc.ContextMenuText)" Type="string" KeyPath="yes" />
+               <!-- Icon for Contextmenuentry -->
+               <RegistryValue Name="Icon" Value="&quot;[INSTALLFOLDER]PrintPlaysetLauncher.exe&quot;,0" Type="string" />
+               <RegistryKey Key="command">
+                  <RegistryValue Value="&quot;[INSTALLFOLDER]PrintPlaysetLauncher.exe&quot; &quot;%1&quot;" Type="string" />
+               </RegistryKey>
+            </RegistryKey>
+         </Component>
+
+         <!-- TIFF -->
+         <Component Id="Assoc_TIFF" Guid="62E5A74F-9FBA-497B-98FC-1F9576706542" Win64="yes" >
+            <RegistryKey Root="HKLM" Key="SOFTWARE\Classes\SystemFileAssociations\.tif\shell\OpenWithMeineApp">
+               <RegistryValue Value="!(loc.ContextMenuText)" Type="string" KeyPath="yes" />
+               <!-- Icon for Contextmenuentry -->
+               <RegistryValue Name="Icon" Value="&quot;[INSTALLFOLDER]PrintPlaysetLauncher.exe&quot;,0" Type="string" />
+               <RegistryKey Key="command">
+                  <RegistryValue Value="&quot;[INSTALLFOLDER]PrintPlaysetLauncher.exe&quot; &quot;%1&quot;" Type="string" />
+               </RegistryKey>
+            </RegistryKey>
+         </Component>
+
+         <Component Id="Assoc_TIFF2" Guid="62FF263E-5384-49D5-A580-DE64820A432B" Win64="yes" >
+            <RegistryKey Root="HKLM" Key="SOFTWARE\Classes\SystemFileAssociations\.tiff\shell\OpenWithMeineApp">
+               <RegistryValue Value="!(loc.ContextMenuText)" Type="string" KeyPath="yes" />
+               <!-- Icon for Contextmenuentry -->
+               <RegistryValue Name="Icon" Value="&quot;[INSTALLFOLDER]PrintPlaysetLauncher.exe&quot;,0" Type="string" />
+               <RegistryKey Key="command">
+                  <RegistryValue Value="&quot;[INSTALLFOLDER]PrintPlaysetLauncher.exe&quot; &quot;%1&quot;" Type="string" />
+               </RegistryKey>
+            </RegistryKey>
+         </Component>
+
+      </ComponentGroup>
+
+
+   </Fragment>
+</Wix>
