@@ -1,3 +1,9 @@
+parameters:
+- name: createRelease
+  type: boolean
+  default: false
+  displayName: 'Create GitHub Release?'
+
 trigger:
   branches:
     include:
@@ -25,34 +31,33 @@ steps:
     command: 'restore'
     projects: '$(solution)'
 
-- task: DotNetCoreCLI@2
-  displayName: 'Build PrintPlayset and PrintPlaysetLauncher'
-  inputs:
-    command: 'build'
-    projects: |
-      **/PrintPlayset.csproj
-      **/PrintPlaysetLauncher.csproj
-    arguments: '--configuration $(buildConfiguration)'
-
 - task: PowerShell@2
   displayName: 'Install WiX Toolset build tools'
   inputs:
     targetType: 'inline'
     script: |
       dotnet tool install --global wix
-      
-- task: MSBuild@1
-  displayName: 'Build Setup with WiX Toolset'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build PrintPlayset solution'
   inputs:
-    solution: '**/printplayetsetup.wixproj'
-    msbuildArchitecture: 'x64'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    command: 'build'
+    projects: |
+      **/PrintPlayset.slnx
+    arguments: '--configuration $(buildConfiguration)'
+      
+# - task: MSBuild@1
+#   displayName: 'Build Setup with WiX Toolset'
+#   inputs:
+#     solution: '**/printplayetsetup.wixproj'
+#     msbuildArchitecture: 'x64'
+#     platform: '$(buildPlatform)'
+#     configuration: '$(buildConfiguration)'
 
 - task: CopyFiles@2
   displayName: 'Copy Setup to Artifact Staging'
   inputs:
-    Contents: '**/bin/$(buildConfiguration)/**/setup.exe'
+    Contents: '**/bin/$(buildConfiguration)/**/*.exe'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     flattenFolders: true
 
@@ -64,6 +69,7 @@ steps:
 
 - task: PowerShell@2
   displayName: 'Create GitHub Release'
+  condition: and(succeeded(), eq('${{ parameters.createRelease }}', true))
   inputs:
     targetType: 'inline'
     script: |
