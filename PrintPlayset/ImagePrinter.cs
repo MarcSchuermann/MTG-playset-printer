@@ -50,6 +50,7 @@ namespace PrintPlayset
 
                   try
                   {
+                     previewDialog.WindowState = FormWindowState.Maximized;
                      previewDialog.ShowDialog();
                   }
                   catch (Exception ex)
