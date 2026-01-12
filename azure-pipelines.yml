@@ -43,7 +43,7 @@ steps:
   inputs:
     command: 'build'
     projects: |
-      **/PrintPlayset.slnx
+      **/*.csproj
     arguments: '--configuration $(buildConfiguration)'
       
 # - task: MSBuild@1
