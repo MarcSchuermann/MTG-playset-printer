@@ -2,7 +2,7 @@ parameters:
 - name: createRelease
   type: boolean
   default: false
-  displayName: 'Create GitHub Release?'
+  displayName: 'Create GitHub Release'
 
 trigger:
   branches:
@@ -70,7 +70,7 @@ steps:
 - task: GithubRelease@1 
   displayName: 'Create GitHub Release'      
   inputs:
-    gitHubConnection: GitHub
+    gitHubConnection: MarcSchuermann
     repositoryName: MarcSchuermann/MTG-playset-printer
     tagSource: gitTag
     tag: $(Build.BuildNumber)      
