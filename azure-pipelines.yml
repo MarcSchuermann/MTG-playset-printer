@@ -25,18 +25,18 @@ steps:
     version: $(dotnetVersion)
     includePreviewVersions: false
 
-- task: DotNetCoreCLI@2
-  displayName: 'Restore NuGet packages'
-  inputs:
-    command: 'restore'
-    projects: '**/*.slnx'
-
 - task: PowerShell@2
   displayName: 'Install WiX Toolset build tools'
   inputs:
     targetType: 'inline'
     script: |
       dotnet tool install --global wix
+
+- task: DotNetCoreCLI@2
+  displayName: 'Restore NuGet packages'
+  inputs:
+    command: 'restore'
+    projects: '**/*.slnx'
 
 - task: DotNetCoreCLI@2
   displayName: 'Build PrintPlayset solution'
