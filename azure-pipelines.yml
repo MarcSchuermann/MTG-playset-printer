@@ -67,36 +67,12 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'Setup'
 
-- task: PowerShell@2
-  displayName: 'Create GitHub Release'
-  condition: and(succeeded(), eq('${{ parameters.createRelease }}', true))
+- task: GithubRelease@1 
+  displayName: 'Create GitHub Release'      
   inputs:
-    targetType: 'inline'
-    script: |
-      $token = "$(GithubPAT)"
-      $headers = @{
-        Authorization = "token $token"
-        Accept = "application/vnd.github.v3+json"
-      }
-      
-      $version = "v1.0.$(Build.BuildId)"
-      $releaseData = @{
-        tag_name = $version
-        target_commitish = "$(Build.SourceVersion)"
-        name = "Release $version"
-        body = "Automated release from Azure Pipeline build $(Build.BuildId)"
-        draft = $false
-        prerelease = $false
-      }
-      
-      $releaseJson = $releaseData | ConvertTo-Json
-      
-      # Create the release
-      $release = Invoke-RestMethod -Uri "https://api.github.com/repos/MarcSchuermann/MTG-playset-printer/releases" -Method Post -Headers $headers -Body $releaseJson
-      
-      # Upload the asset
-      $uploadUrl = $release.upload_url -replace "\{\?.*\}", ""
-      $setupPath = "$(Build.ArtifactStagingDirectory)/setup.exe"
-      
-      $headers["Content-Type"] = "application/octet-stream"
-      Invoke-RestMethod -Uri "$uploadUrl`?name=setup.exe" -Method Post -Headers $headers -InFile $setupPath
+    gitHubConnection: GitHub
+    repositoryName: MarcSchuermann/MTG-playset-printer
+    tagSource: gitTag
+    tag: $(Build.BuildNumber)      
+    assets: |
+      $(Build.ArtifactStagingDirectory)/*.exe
