@@ -29,7 +29,7 @@ steps:
   displayName: 'Restore NuGet packages'
   inputs:
     command: 'restore'
-    projects: '$(solution)'
+    projects: '**/*.csproj'
 
 - task: PowerShell@2
   displayName: 'Install WiX Toolset build tools'
