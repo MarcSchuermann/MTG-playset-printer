@@ -17,7 +17,7 @@ variables:
   solution: '**/*.slnx'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  dotnetVersion: '8.0.x'
+  dotnetVersion: '9.0.200'
 
 steps:
 - task: UseDotNet@2
@@ -29,7 +29,7 @@ steps:
   displayName: 'Restore NuGet packages'
   inputs:
     command: 'restore'
-    projects: '**/*.csproj'
+    projects: '**/*.slnx'
 
 - task: PowerShell@2
   displayName: 'Install WiX Toolset build tools'
@@ -43,7 +43,7 @@ steps:
   inputs:
     command: 'build'
     projects: |
-      **/*.csproj
+      **/*.slnx
     arguments: '--configuration $(buildConfiguration)'
       
 # - task: MSBuild@1
