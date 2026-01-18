@@ -38,13 +38,13 @@ steps:
     command: 'restore'
     projects: '**/PrintPlayset.slnx'
 
-- task: DotNetCoreCLI@2
-  displayName: 'Build PrintPlayset solution'
+- task: VSBuild@1
+  displayName: 'Build PrintPlayset solution (Visual Studio MSBuild)'
   inputs:
-    command: 'build'
-    projects: |
-      **/PrintPlayset.slnx
-    arguments: '--configuration $(buildConfiguration)'
+    solution: '**/PrintPlayset.slnx'
+    vsVersion: 'latest'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
       
 # - task: MSBuild@1
 #   displayName: 'Build Setup with WiX Toolset'
