@@ -43,7 +43,7 @@ steps:
   inputs:
     command: 'build'
     projects: |
-      **/*.slnx
+      **/PrintPlayset.slnx
     arguments: '--configuration $(buildConfiguration)'
       
 # - task: MSBuild@1
