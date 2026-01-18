@@ -6,14 +6,6 @@
   <Folder Name="/Solution Items/">
     <File Path="../azure-pipelines.yml" />
   </Folder>
-  <Project Path="../PrintPlaysetBootstraper/PrintPlaysetBootstraper.wixproj" Id="70aeed9f-3490-47c9-9953-8aefd0c341bf">
-    <Platform Project="x86" />
-    <Build />
-  </Project>
   <Project Path="../PrintPlaysetLauncher/PrintPlaysetLauncher.csproj" Id="3bb920f2-7b3c-4449-9955-437c5bd20da9" />
-  <Project Path="../PrintPlaysetSetup/PrintPlaysetSetup.wixproj" Id="abb59d97-4f06-49d7-824c-c87e22ea94f7">
-    <Platform Project="x86" />
-    <Build />
-  </Project>
   <Project Path="PrintPlayset.csproj" />
 </Solution>
