@@ -1,0 +1,11 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/Solution Items/">
+    <File Path="./azure-pipelines.yml" />
+  </Folder>
+  <Project Path="./PrintPlaysetLauncher/PrintPlaysetLauncher.csproj" />
+  <Project Path="./PrintPlayset/PrintPlayset.csproj" />
+</Solution>
