@@ -36,7 +36,7 @@ steps:
   displayName: 'Restore NuGet packages'
   inputs:
     command: 'restore'
-    projects: '**/*.slnx'
+    projects: '**/PrintPlayset.slnx'
 
 - task: DotNetCoreCLI@2
   displayName: 'Build PrintPlayset solution'
