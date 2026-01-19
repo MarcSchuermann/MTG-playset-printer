@@ -82,6 +82,7 @@ steps:
   inputs:
     gitHubConnection: MarcSchuermann
     repositoryName: MarcSchuermann/MTG-playset-printer
-    tagSource: gitTag   
+    tagSource: 'userSpecifiedTag'
+    tag: 'v$(Build.BuildNumber)'
     assets: |
       $(Build.ArtifactStagingDirectory)/*.exe
