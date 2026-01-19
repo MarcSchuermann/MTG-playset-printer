@@ -25,69 +25,69 @@
       <!-- Application Files -->
 		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
 			 <Component Id="ProductComponentLancherExe" Win64="yes" >
-             <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\PrintPlaysetLauncher.exe" KeyPath="yes" />
-             <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\PrintPlaysetLauncher.runtimeconfig.json" />
-             <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\appsettings.json" />
+             <File Source="..\PrintPlaysetLauncher\bin\$(var.BuildConfiguration)\net8.0-windows\PrintPlaysetLauncher.exe" KeyPath="yes" />
+             <File Source="..\PrintPlaysetLauncher\bin\$(var.BuildConfiguration)\net8.0-windows\PrintPlaysetLauncher.runtimeconfig.json" />
+             <File Source="..\PrintPlaysetLauncher\bin\$(var.BuildConfiguration)\net8.0-windows\appsettings.json" />
           </Component>
          <Component Id="ProductComponentPrintPlayset" Win64="yes" >
-            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\PrintPlayset.dll" />
+            <File Source="..\PrintPlaysetLauncher\bin\$(var.BuildConfiguration)\net8.0-windows\PrintPlayset.dll" />
          </Component>
          <Component Id="ProductComponentPrintPlaysetLauncher" Win64="yes" >
-            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\PrintPlaysetLauncher.dll" />
+            <File Source="..\PrintPlaysetLauncher\bin\$(var.BuildConfiguration)\net8.0-windows\PrintPlaysetLauncher.dll" />
          </Component>
          <Component Id="SystemDrawingCommon" Win64="yes" >
-            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\System.Drawing.Common.dll" />
+            <File Source="..\PrintPlaysetLauncher\bin\$(var.BuildConfiguration)\net8.0-windows\System.Drawing.Common.dll" />
          </Component>
          <Component Id="MicrosoftExtensionsConfigurationAbstractions" Win64="yes" >
-            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll" />
+            <File Source="..\PrintPlaysetLauncher\bin\$(var.BuildConfiguration)\net8.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll" />
          </Component>         
          <Component Id="MicrosoftExtensionsConfiguration" Win64="yes" >
-            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.dll" />
+            <File Source="..\PrintPlaysetLauncher\bin\$(var.BuildConfiguration)\net8.0-windows\Microsoft.Extensions.Configuration.dll" />
          </Component>
          <Component Id="MicrosoftExtensionsConfigurationJson" Win64="yes" >
-            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Json.dll" />
+            <File Source="..\PrintPlaysetLauncher\bin\$(var.BuildConfiguration)\net8.0-windows\Microsoft.Extensions.Configuration.Json.dll" />
          </Component>
          <Component Id="MicrosoftExtensionsFileProvidersAbstractions" Win64="yes" >
-            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll" />
+            <File Source="..\PrintPlaysetLauncher\bin\$(var.BuildConfiguration)\net8.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll" />
          </Component>
          <Component Id="MicrosoftExtensionsConfigurationFileExtensions" Win64="yes" >
-            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.FileExtensions.dll" />
+            <File Source="..\PrintPlaysetLauncher\bin\$(var.BuildConfiguration)\net8.0-windows\Microsoft.Extensions.Configuration.FileExtensions.dll" />
          </Component>
          <Component Id="MicrosoftExtensionsConfigurationBinder" Win64="yes" >
-            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Binder.dll" />
+            <File Source="..\PrintPlaysetLauncher\bin\$(var.BuildConfiguration)\net8.0-windows\Microsoft.Extensions.Configuration.Binder.dll" />
          </Component>
          <Component Id="MicrosoftExtensionsFileProvidersPhysical" Win64="yes" >
-            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.FileProviders.Physical.dll" />
+            <File Source="..\PrintPlaysetLauncher\bin\$(var.BuildConfiguration)\net8.0-windows\Microsoft.Extensions.FileProviders.Physical.dll" />
          </Component>
          <Component Id="MicrosoftExtensionsPrimitives" Win64="yes" >
-            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.Primitives.dll" />
+            <File Source="..\PrintPlaysetLauncher\bin\$(var.BuildConfiguration)\net8.0-windows\Microsoft.Extensions.Primitives.dll" />
          </Component>
          <Component Id="MicrosoftExtensionsFileSystemGlobbing" Win64="yes" >
-            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll" />
+            <File Source="..\PrintPlaysetLauncher\bin\$(var.BuildConfiguration)\net8.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll" />
          </Component>
          <Component Id="MicrosoftExtensionsLogging" Win64="yes" >
-            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.dll" />
+            <File Source="..\PrintPlaysetLauncher\bin\$(var.BuildConfiguration)\net8.0-windows\Microsoft.Extensions.Logging.dll" />
          </Component>
          <Component Id="MicrosoftExtensionsLoggingAbstractions" Win64="yes" >
-            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Abstractions.dll" />
+            <File Source="..\PrintPlaysetLauncher\bin\$(var.BuildConfiguration)\net8.0-windows\Microsoft.Extensions.Logging.Abstractions.dll" />
          </Component>
          <Component Id="MicrosoftExtensionsLoggingConfiguration" Win64="yes" >
-            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Configuration.dll" />
+            <File Source="..\PrintPlaysetLauncher\bin\$(var.BuildConfiguration)\net8.0-windows\Microsoft.Extensions.Logging.Configuration.dll" />
          </Component>
          <Component Id="MicrosoftExtensionsLoggingConsole" Win64="yes" >
-            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Console.dll" />
+            <File Source="..\PrintPlaysetLauncher\bin\$(var.BuildConfiguration)\net8.0-windows\Microsoft.Extensions.Logging.Console.dll" />
          </Component>
          <Component Id="MicrosoftExtensionsDependencyInjectionAbstractions" Win64="yes" >
-            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
+            <File Source="..\PrintPlaysetLauncher\bin\$(var.BuildConfiguration)\net8.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
          </Component>
          <Component Id="MicrosoftExtensionsDependencyInjection" Win64="yes" >
-            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.dll" />
+            <File Source="..\PrintPlaysetLauncher\bin\$(var.BuildConfiguration)\net8.0-windows\Microsoft.Extensions.DependencyInjection.dll" />
          </Component>
          <Component Id="MicrosoftExtensionsOptions" Win64="yes" >
-            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.Options.dll" />
+            <File Source="..\PrintPlaysetLauncher\bin\$(var.BuildConfiguration)\net8.0-windows\Microsoft.Extensions.Options.dll" />
          </Component>
          <Component Id="MicrosoftExtensionsOptionsConfigurationExtensions" Win64="yes" >
-            <File Source="..\PrintPlaysetLauncher\bin\Debug\net8.0-windows\Microsoft.Extensions.Options.ConfigurationExtensions.dll" />
+            <File Source="..\PrintPlaysetLauncher\bin\$(var.BuildConfiguration)\net8.0-windows\Microsoft.Extensions.Options.ConfigurationExtensions.dll" />
          </Component>
       </ComponentGroup>
 

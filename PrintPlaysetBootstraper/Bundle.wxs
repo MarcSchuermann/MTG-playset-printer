@@ -25,14 +25,14 @@
 
          <!-- en-us MSI -->
          <MsiPackage Id="MeineEnAppMsi"
-                     SourceFile="..\PrintPlaysetSetup\bin\Debug\en-us\PrintPlaysetSetup.msi"
+                     SourceFile="..\PrintPlaysetSetup\bin\$(var.BuildConfiguration)\en-us\PrintPlaysetSetup.msi"
                      DisplayName="PrintPlaysetSetup"
                      Vital="yes"
                      Compressed="yes" />
 
          <!-- de-de MSI -->
          <MsiPackage Id="MeineDeAppMsi"
-                     SourceFile="..\PrintPlaysetSetup\bin\Debug\de-de\PrintPlaysetSetup.msi"
+                     SourceFile="..\PrintPlaysetSetup\bin\$(var.BuildConfiguration)\de-de\PrintPlaysetSetup.msi"
                      DisplayName="PrintPlaysetSetup"
                      Vital="yes"
                      Compressed="yes" />
