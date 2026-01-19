@@ -46,13 +46,21 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
       
-# - task: MSBuild@1
-#   displayName: 'Build Setup with WiX Toolset'
-#   inputs:
-#     solution: '**/printplayetsetup.wixproj'
-#     msbuildArchitecture: 'x64'
-#     platform: '$(buildPlatform)'
-#     configuration: '$(buildConfiguration)'
+- task: MSBuild@1
+  displayName: 'Build PrintPlaysetSetup with WiX Toolset'
+  inputs:
+    solution: '**/PrintPlaysetSetup.wixproj'
+    msbuildArchitecture: 'x64'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+- task: MSBuild@1
+  displayName: 'Build PrintPlaysetBootstraper with WiX Toolset'
+  inputs:
+    solution: '**/PrintPlaysetBootstraper.wixproj'
+    msbuildArchitecture: 'x64'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
 
 - task: CopyFiles@2
   displayName: 'Copy Setup to Artifact Staging'
@@ -73,6 +81,6 @@ steps:
     gitHubConnection: MarcSchuermann
     repositoryName: MarcSchuermann/MTG-playset-printer
     tagSource: gitTag
-    tag: $(Build.BuildNumber)      
+    # tag: $(Build.BuildNumber)      
     assets: |
       $(Build.ArtifactStagingDirectory)/*.exe
