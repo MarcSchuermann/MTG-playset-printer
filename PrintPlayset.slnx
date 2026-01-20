@@ -4,8 +4,9 @@
     <Platform Name="x86" />
   </Configurations>
   <Folder Name="/Solution Items/">
-    <File Path="./azure-pipelines.yml" />
+    <File Path="azure-pipelines.yml" />
+    <File Path="build.defaults.targets" />
   </Folder>
-  <Project Path="./PrintPlaysetLauncher/PrintPlaysetLauncher.csproj" />
-  <Project Path="./PrintPlayset/PrintPlayset.csproj" />
+  <Project Path="PrintPlayset/PrintPlayset.csproj" />
+  <Project Path="PrintPlaysetLauncher/PrintPlaysetLauncher.csproj" />
 </Solution>
