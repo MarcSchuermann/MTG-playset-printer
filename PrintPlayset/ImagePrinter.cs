@@ -51,6 +51,9 @@ namespace PrintPlayset
                   try
                   {
                      previewDialog.WindowState = FormWindowState.Maximized;
+                     previewDialog.FormBorderStyle = FormBorderStyle.Sizable;
+                     previewDialog.MinimizeBox = true;
+                     previewDialog.MaximizeBox = true;
                      previewDialog.ShowDialog();
                   }
                   catch (Exception ex)

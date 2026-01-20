@@ -6,17 +6,13 @@
     <ProductVersion>3.10</ProductVersion>
     <ProjectGuid>70aeed9f-3490-47c9-9953-8aefd0c341bf</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>PrintPlaysetBootstraper</OutputName>
+    <OutputName>PrintPlaysetSetup</OutputName>
     <OutputType>Bundle</OutputType>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+  <PropertyGroup>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
     <DefineConstants>Debug</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <OutputPath>bin\$(Configuration)\</OutputPath>
-    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Bundle.wxs" />

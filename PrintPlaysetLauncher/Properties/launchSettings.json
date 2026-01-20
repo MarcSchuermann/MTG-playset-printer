@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PrintPlaysetLauncher": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\Users\\MarcS\\Downloads\\MossbornHydra471__90245.jpg\""
+    }
+  }
+}

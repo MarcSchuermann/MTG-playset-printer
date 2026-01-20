@@ -1,0 +1,113 @@
+parameters:
+- name: createRelease
+  type: boolean
+  default: false
+  displayName: 'Create GitHub Release'
+- name: alphaVersion
+  type:        boolean
+  displayName: 'Create ALPHA version'
+  default:     true
+
+trigger:
+  branches:
+    include:
+    - main
+    - feature/*
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  solution: '**/*.slnx'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  dotnetVersion: '9.0.200'
+
+steps:
+- task: UseDotNet@2
+  inputs:
+    version: $(dotnetVersion)
+    includePreviewVersions: false
+
+- powershell: |
+    [xml]$buildInfoXml = Get-Content $(Build.SourcesDirectory)/build.defaults.targets 
+    # version
+    Write-Host $(Build.SourcesDirectory)\build.defaults.targets
+    $version=$buildInfoXml.Project.PropertyGroup.Version
+    $version="$version".Trim()
+    Write-Host "##vso[task.setvariable variable=version]$version"
+    Write-Host "Version: '$version'" 
+    if ( "${{ parameters.alphaVersion }}" -eq "True" )
+    {
+      $fullVersion="$version-alpha.$(Build.BuildNumber)"
+    }
+    else
+    {
+      $fullVersion=$version
+    }
+    Write-Host "##vso[task.setvariable variable=fullVersion]$fullVersion"
+    Write-Host "Full-Version: '$fullVersion'" 
+  displayName: 'Extract Version from build.defaults.targets'
+
+- task: PowerShell@2
+  displayName: 'Install WiX Toolset build tools'
+  inputs:
+    targetType: 'inline'
+    script: |
+      dotnet tool install --global wix
+
+- task: DotNetCoreCLI@2
+  displayName: 'Restore NuGet packages'
+  inputs:
+    command: 'restore'
+    projects: '**/PrintPlayset.slnx'
+
+- task: VSBuild@1
+  displayName: 'Build PrintPlayset solution (Visual Studio MSBuild)'
+  inputs:
+    solution: '**/PrintPlayset.slnx'
+    vsVersion: 'latest'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+      
+- task: VSBuild@1
+  displayName: 'Build PrintPlaysetSetup with WiX Toolset'
+  inputs:
+    solution: '**/PrintPlaysetSetup.wixproj'
+    vsVersion: 'latest'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+    msbuildArgs: '/p:DefineConstants="BuildConfiguration=$(buildConfiguration)" /p:Version=$(fullVersion)'
+
+- task: VSBuild@1
+  displayName: 'Build PrintPlaysetBootstraper with WiX Toolset'
+  inputs:
+    solution: '**/PrintPlaysetBootstraper.wixproj'
+    vsVersion: 'latest'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+    msbuildArgs: '/p:DefineConstants="BuildConfiguration=$(buildConfiguration)" /p:Version=$(fullVersion)'
+
+- task: CopyFiles@2
+  displayName: 'Copy Setup to Artifact Staging'
+  inputs:
+    Contents: '**/bin/$(buildConfiguration)/**/PrintPlaysetSetup.exe'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    flattenFolders: true
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Setup Artifact'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'Setup'
+
+- task: GithubRelease@1 
+  displayName: 'Create GitHub Release'
+  condition: and(succeeded(), eq('${{ parameters.createRelease }}', 'True'))
+  inputs:
+    gitHubConnection: MarcSchuermann
+    repositoryName: MarcSchuermann/MTG-playset-printer
+    tagSource: 'userSpecifiedTag'
+    tag: 'v$(fullVersion)'
+    assets: |
+      $(Build.ArtifactStagingDirectory)/*.exe
