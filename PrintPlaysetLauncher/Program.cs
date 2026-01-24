@@ -1,3 +1,6 @@
+// -----------------------------------------------------------------------
+// <copyright file="Program.cs" company="Marc Schuermann" />
+// -----------------------------------------------------------------------
 
 using Microsoft.Extensions.Logging;
 
@@ -9,8 +12,6 @@ namespace PrintPlaysetLauncher
 {
    public class Program
    {
-      [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1848:Use the LoggerMessage delegates", Justification = "<Pending>")]
-      [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2254:Template should be a static expression", Justification = "<Pending>")]
       public static void Main(string[] args)
       {
          var appConfig = new ApplicationConfiguration();
@@ -29,7 +30,7 @@ namespace PrintPlaysetLauncher
                continue;
             }
 
-            var resizedImages = ImagesManipulator.ResizeImages(logger, new[] { filePath }, appConfig.CardWidth, appConfig.CardHeight).ToList();
+            var resizedImages = ImagesManipulator.ResizeImages(logger, [filePath], appConfig.CardWidth, appConfig.CardHeight).ToList();
 
             ImagePrinter.PrintImages(logger, resizedImages, appConfig.OpenFilePreviewDialog);
          }

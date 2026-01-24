@@ -1,4 +1,6 @@
-using System.Drawing;
+// -----------------------------------------------------------------------
+// <copyright file="ImagesManipulator.cs" company="Marc Schuermann" />
+// -----------------------------------------------------------------------
 
 using Microsoft.Extensions.Logging;
 
@@ -6,12 +8,11 @@ namespace PrintPlayset
 {
    public class ImagesManipulator
    {
-      [System.Diagnostics.CodeAnalysis.SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification = "<Pending>")]
       public static IEnumerable<string> ResizeImages(ILogger logger, IEnumerable<string> itemPaths, int cardWidth, int cardHeight)
       {
-         foreach (var file in itemPaths)
+         foreach (var filePath in itemPaths)
          {
-            using var stream = new FileStream(file, FileMode.Open);
+            using var stream = new FileStream(filePath, FileMode.Open);
 
             Image image;
             try
@@ -20,7 +21,7 @@ namespace PrintPlayset
             }
             catch
             {
-               logger.LogWarning(file + " is not readable!");
+               logger.LogWarning($"{filePath} is not readable!");
                continue;
             }
 
@@ -32,7 +33,7 @@ namespace PrintPlayset
             var tempFile = Path.GetTempFileName().Replace(".tmp", ".png");
             bitmap.Save(tempFile);
 
-            logger.LogInformation(file + " resized to " + tempFile);
+            logger.LogInformation($"{filePath} resized to {tempFile}");
 
             yield return tempFile;
          }

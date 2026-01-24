@@ -1,9 +1,13 @@
+// -----------------------------------------------------------------------
+// <copyright file="ApplicationConfiguration.cs" company="Marc Schuermann" />
+// -----------------------------------------------------------------------
+
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace PrintPlayset
 {
-   internal class ApplicationConfiguration
+   internal sealed class ApplicationConfiguration
    {
       private readonly IConfigurationRoot configuration;
       public ApplicationConfiguration()
@@ -23,6 +27,12 @@ namespace PrintPlayset
 
       private string GetSetting(string key)
       {
+         if (configuration == null)
+            return string.Empty;
+
+         if (key == null)
+            return string.Empty;
+
          return configuration[$"AppSettings:{key}"];
       }
    }
