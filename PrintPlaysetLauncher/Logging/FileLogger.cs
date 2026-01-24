@@ -1,23 +1,37 @@
+// -----------------------------------------------------------------------
+// <copyright file="FileLogger.cs" company="Marc Schuermann" />
+// -----------------------------------------------------------------------
+
 using Microsoft.Extensions.Logging;
 
 namespace PrintPlaysetLauncher.Logging
 {
-   internal class FileLogger : ILogger
+   internal sealed class FileLogger : ILogger
    {
-      private readonly string _path;
-      public FileLogger(string path) => _path = path;
+      private readonly string path;
+      public FileLogger(string path)
+      {
+         this.path = path;
+      }
 
-      public IDisposable BeginScope<TState>(TState state) => null;
-      public bool IsEnabled(LogLevel logLevel) => true;
+      public IDisposable BeginScope<TState>(TState state)
+      {
+         return null;
+      }
+
+      public bool IsEnabled(LogLevel logLevel)
+      {
+         return true;
+      }
 
       public void Log<TState>(LogLevel logLevel, EventId eventId,
           TState state, Exception exception, Func<TState, Exception, string> formatter)
       {
          var message = $"{DateTime.Now}: {logLevel}: {formatter(state, exception)}";
-         File.AppendAllText(_path, message + Environment.NewLine);
+         File.AppendAllText(path, message + Environment.NewLine);
 
          if (exception != null)
-            File.AppendAllText(_path, exception.ToString() + Environment.NewLine);
+            File.AppendAllText(path, exception.ToString() + Environment.NewLine);
       }
 
    }

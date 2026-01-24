@@ -1,10 +1,10 @@
+// -----------------------------------------------------------------------
+// <copyright file="ImagePrinter.cs" company="Marc Schuermann" />
+// -----------------------------------------------------------------------
 
-using System.Drawing;
 using System.Drawing.Printing;
 
 using Microsoft.Extensions.Logging;
-
-using System.Windows.Forms;
 
 namespace PrintPlayset
 {
@@ -27,11 +27,14 @@ namespace PrintPlayset
                {
                   try
                   {
-                     var i = Image.FromStream(stream);
-                     e.Graphics.DrawImage(i, new Point(0, 0));
-                     e.Graphics.DrawImage(i, new Point(235, 0));
-                     e.Graphics.DrawImage(i, new Point(0, 335));
-                     e.Graphics.DrawImage(i, new Point(235, 335));
+                     if (e?.Graphics != null)
+                     {
+                        var i = Image.FromStream(stream);
+                        e.Graphics.DrawImage(i, new Point(0, 0));
+                        e.Graphics.DrawImage(i, new Point(235, 0));
+                        e.Graphics.DrawImage(i, new Point(0, 335));
+                        e.Graphics.DrawImage(i, new Point(235, 335));
+                     }
                   }
                   catch (Exception ex)
                   {
